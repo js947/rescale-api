@@ -1,8 +1,8 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 setup(
     name="Rescale API",
     version="0.1",
-    packages=find_packages(),
+    packages=['rescale']
     scripts=[],
     install_requires=["requests", "keyring"],
     package_data={},
