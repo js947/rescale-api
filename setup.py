@@ -4,7 +4,7 @@ setup(
     version="0.1",
     packages=['rescale'],
     scripts=[],
-    install_requires=["requests", "keyring"],
+    install_requires=["json", "requests", "keyring"],
     package_data={},
     author="Jeffrey Salmond",
     author_email="jsalmond@rescale.com",

@@ -1,5 +1,6 @@
 import requests
 import keyring
+import json
 
 class Rescale:
   rescale = requests.Session()
