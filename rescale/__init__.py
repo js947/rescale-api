@@ -5,16 +5,10 @@ import json
 class Rescale:
   rescale = requests.Session()
 
-  def __init__(self, env='eu'):
+  def __init__(self, platform, key):
     self.s = requests.Session()
     self.s.headers.update({"Authorization": "Token " + keyring.get_password('rescale', env)})
-
-    envs = {
-        'eu': 'eu',
-        'global': 'platform',
-        'arrival': 'eu',
-    }
-    self.baseurl = f"https://{envs[env]}.rescale.com"
+    self.baseurl = f"https://{platform}.rescale.com"
 
   def url(self, *c):
     return "/".join((self.baseurl, "api", "v3") + c) + "/"
