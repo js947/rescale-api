@@ -2,7 +2,7 @@ from setuptools import setup
 setup(
     name="Rescale API",
     version="0.1",
-    packages=['rescale']
+    packages=['rescale'],
     scripts=[],
     install_requires=["requests", "keyring"],
     package_data={},
