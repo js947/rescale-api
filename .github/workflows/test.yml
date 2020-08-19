@@ -21,6 +21,6 @@ jobs:
         python -m pip install -e .
         python -m pip install keyring.api
     - name: Insert API key
-      run: "echo ${{ secret.API_KEY }} | keyring set rescale default"
+      run: "echo ${{ secrets.API_KEY }} | keyring set rescale default"
     - name: Run test
       run: python tests/list_jobs.py
