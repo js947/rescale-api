@@ -5,7 +5,7 @@ import json
 class Rescale:
   rescale = requests.Session()
 
-  def __init__(self, platform, key):
+  def __init__(self, platform='platform', key='default'):
     self.s = requests.Session()
     self.s.headers.update({"Authorization": "Token " + keyring.get_password('rescale', key)})
     self.baseurl = f"https://{platform}.rescale.com"
