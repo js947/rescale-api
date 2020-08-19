@@ -8,7 +8,7 @@ class Rescale:
   def __init__(self, platform='platform', key='default'):
     self.s = requests.Session()
     self.s.headers.update({"Authorization": "Token " + keyring.get_password('rescale', key)})
-    self.baseurl = f"https://{platform}.rescale.com"
+    self.baseurl = "https://%s.rescale.com" % platform
 
   def url(self, *c):
     return "/".join((self.baseurl, "api", "v3") + c) + "/"
