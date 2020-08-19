@@ -19,7 +19,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install -e .
-        python -m pip install keyring.api
+        python -m pip install keyrings.alt
     - name: Insert API key
       run: "echo ${{ secrets.API_KEY }} | keyring set rescale default"
     - name: Run test
