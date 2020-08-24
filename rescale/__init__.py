@@ -31,3 +31,15 @@ class Rescale:
     except json.JSONDecodeError:
       r = None
     return r
+
+  def jobs(self):
+    return self.multiget("jobs")
+
+  def job(self, jobid):
+    return self.get("jobs", jobid)
+
+  def job_outputfiles(self, jobid):
+    return self.multiget("jobs", jobid, "files")
+
+  def job_statuses(self, jobid):
+    return self.multiget("jobs", jobid, "statuses")
