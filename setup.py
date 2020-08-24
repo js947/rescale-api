@@ -4,8 +4,16 @@ setup(
     version="0.1",
     packages=['rescale'],
     scripts=[],
-    install_requires=["requests", "keyring"],
     package_data={},
+
+    install_requires=["requests", "keyring"],
+    extras_require={
+        'dev': [
+            'pandas',
+            'keyrings.alt',
+        ]
+    },
+
     author="Jeffrey Salmond",
     author_email="jsalmond@rescale.com",
     description="Jeffrey's Rescale API widget",
