@@ -7,3 +7,8 @@ jobs = pd.DataFrame(
     for j in rescale.multiget("jobs")
 )
 print(jobs)
+
+jobs = pd.DataFrame(
+    dict(id=j['id'], name=j['name'])
+    for j in rescale.jobs()
+)
