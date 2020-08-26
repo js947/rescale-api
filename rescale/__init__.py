@@ -40,6 +40,9 @@ class Rescale:
 
     def job(self, jobid):
         return self.get("jobs", jobid)
+    
+    def job_inputfiles(self, jobid, analysis=0):
+        return self.job(jobid)['jobanalyses'][analysis]['inputFiles']
 
     def job_outputfiles(self, jobid):
         return self.multiget("jobs", jobid, "files")
