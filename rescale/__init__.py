@@ -4,8 +4,6 @@ import json
 
 
 class Rescale:
-    rescale = requests.Session()
-
     def __init__(self, platform="platform", key="default"):
         self.s = requests.Session()
         self.s.headers.update(
