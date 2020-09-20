@@ -69,7 +69,10 @@ class Rescale:
         return self.delete("jobs", jobid)
 
     def get_job_status(self, jobid):
-        return next(self.multiget("jobs", jobid, "statuses"))["status"]
+        try:
+            return next(self.multiget("jobs", jobid, "statuses"))["status"]
+        except StopIteration:
+            return None
 
     @lru_cache(maxsize=2048)
     def get_job_hwinfo(self, jobid):
