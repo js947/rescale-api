@@ -9,13 +9,23 @@ from tqdm import tqdm
 
 
 class Rescale:
-    def __init__(self, platform="global"):
-        cfg = configparser.ConfigParser()
-        cfg.read(Path.cwd() / "drive" / "My Drive" / "apiconfig")
+    def __init__(self, platform="default"):
+        if "platform" == "env":
+            apibaseurl = os.environ["RESCALE_APIBASEURL"]
+            apikey = os.environ["RESCALE_APIKEY"]
+        else:
+            cfg = configparser.ConfigParser()
+            for f in [
+                Path.cwd() / "drive" / "My Drive" / "apiconfig",
+                Path.home() / ".config" / "rescale" / "apiconfig",
+            ]:
+                cfg.read(f)
+            apibaseurl = cfg.get(platform, "apibaseurl")
+            apikey = cfg.get(platform, "apikey")
 
         self.s = requests.Session()
-        self.s.headers.update({"Authorization": "Token " + cfg.get(platform, "apikey")})
-        self.baseurl = cfg.get(platform, "apibaseurl")
+        self.s.headers.update({"Authorization": "Token %s" % apikey})
+        self.baseurl = apibaseurl
 
     # level 1 functionality
     def url(self, *c):

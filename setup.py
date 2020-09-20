@@ -7,13 +7,11 @@ setup(
     scripts=[],
     package_data={},
 
-    install_requires=["requests", "keyring"],
-    extras_require={
-        'dev': [
-            'pandas',
-            'keyrings.alt',
-        ]
-    },
+    install_requires=[
+        "requests",
+        "pandas",
+        "tqdm",
+        ],
 
     author="Jeffrey Salmond",
     author_email="jsalmond@rescale.com",
