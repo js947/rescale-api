@@ -91,6 +91,9 @@ class Rescale:
         for f in self.multiget("jobs", jobid, "files", search=filename):
             yield f["id"], f["name"]
 
+    def get_files(search=None):
+        return self.multiget("files", page_size=999, search=search)
+
     @lru_cache(maxsize=2048)
     def get_file(self, fileid):
         r = self.get("files", fileid, "lines")
@@ -126,6 +129,15 @@ class Rescale:
             for j in self.get_jobs()
             if search(j["name"])
         ).set_index("id")
+
+    def files(self, search=None):
+        return pd.DataFrame(
+            dict(
+                id=f['id'],
+                name=f['name'],
+            )
+            for f in self.get_files(search=search)
+        ).set_index('id')
 
     @lru_cache()
     def pricing(self):
