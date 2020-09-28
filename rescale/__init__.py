@@ -163,7 +163,7 @@ class Rescale:
         def __get_job_metric(jobid, filename, regex, type_fn):
             r = re.compile(regex)
             val = pd.NA
-            for fileid in self.get_job_outputfiles(jobid, filename):
+            for fileid, filename in self.get_job_outputfiles(jobid, filename):
                 for line in self.get_file(fileid):
                     mat = r.match(line)
                     if mat:
