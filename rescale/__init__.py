@@ -87,6 +87,10 @@ class Rescale:
             print(jobid, type(e), e)
             return {}
 
+    def get_job_inputfiles(self, jobid, idx=0):
+        for f in self.get_job(jobid)['jobanalyses'][idx]['inputFiles']:
+            yield f['id'], f['name']
+        
     def get_job_outputfiles(self, jobid, filename=None):
         for f in self.multiget("jobs", jobid, "files", search=filename):
             yield f["id"], f["name"]
