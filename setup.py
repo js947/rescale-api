@@ -9,7 +9,7 @@ setup(
 
     install_requires=[
         "requests",
-        "pandas~=1.0.0",
+        "pandas",
         "tqdm",
         ],
 
